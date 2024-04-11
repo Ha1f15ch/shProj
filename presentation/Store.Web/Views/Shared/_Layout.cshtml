@@ -18,10 +18,9 @@
             </form>
             <span class="navbar-text ml-auto">
                 @{
-                    Cart cart;
-                    if (!Context.Session.TryGetCart(out cart) && (cart.TotalCount > 0))
+                    if (Context.Session.TryGetCart(out Cart cart) && (cart.TotalCount > 0))
                     {
-                        <a href="">товаров @cart.TotalCount на сумму @cart.TotalPrice</a>
+                        <a href="@Url.Action("Index", "Order")">товаров @cart.TotalCount на сумму @cart.TotalPrice</a>
                     }
                     else
                     {
